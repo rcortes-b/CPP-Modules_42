@@ -37,21 +37,12 @@ void	add_contact(PhoneBook *book)
 }
 
 // index, first name, last and nickname
-static int	ft_strlen(std::string str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 static void	print_data(std::string str)
 {
 	int	size;
 
-	size = ft_strlen(str);
+	size = str.size();
 	if (size > 8)
 	{
 		for (int j = 0; j < 7; j++)
