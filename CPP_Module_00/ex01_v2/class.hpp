@@ -15,29 +15,36 @@ private:
 		std::string	_phone_number;
 		std::string	_dsecret;
 public:
-		void	set_index(int index);
-		void	set_first_name();
-		void	set_last_name();
-		void	set_nickname();
-		void	set_phone_number();
-		void	set_dsecret();
+		void		set_index(int index);
+		void		set_first_name();
+		void		set_last_name();
+		void		set_nickname();
+		void		set_phone_number();
+		void		set_dsecret();
+		int			get_index();
+		std::string	get_fname();
+		std::string	get_lname();
+		std::string	get_nickname();
+		std::string	get_phone_number();
+		std::string	get_dsecret();
+
 };
 
 class PhoneBook {
 private:
-	
 		Contact _user[MAX_NUM_OF_CONTACTS];
 		int		_max_contacts;
 
 public:
 		void 	add_contact(void);
+		void	sort_contacts(void);
 		void 	search(void);
 		void	init_index();
 		void	increment_index();
 };
 
-void	add_contact(PhoneBook *book);
+//void	add_contact(PhoneBook *book);
 
-void	print_contacts(PhoneBook *book);
+//void	print_contacts(PhoneBook *book);
 
 #endif

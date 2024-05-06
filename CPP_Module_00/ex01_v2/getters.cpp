@@ -1,61 +1,31 @@
 #include "class.hpp"
 
-void	Contact::set_index(int index)
+int Contact::get_index()
 {
-	this->_index = index;
+    return (this->_index);
 }
 
-void	Contact::set_first_name()
+std::string Contact::get_fname()
 {
-	std::string	str;
-
-	std::cout << "First Name: ";
-	std::cin >> str;
-	this->_first_name = str;
+    return (this->_first_name);
 }
 
-void	Contact::set_last_name()
+std::string Contact::get_lname()
 {
-	std::string	str;
-
-	std::cout << "Last Name: ";
-	std::cin >> str;
-	this->_last_name = str;
+    return (this->_last_name);   
 }
 
-void	Contact::set_nickname()
+std::string Contact::get_nickname()
 {
-	std::string	str;
-
-	std::cout << "Nickname: ";
-	std::cin >> str;
-	this->_nickname = str;
+    return (this->_nickname);
 }
 
-void	Contact::set_phone_number()
+std::string Contact::get_phone_number()
 {
-	std::string	str;
-
-	std::cout << "Phone Number: ";
-	std::cin >> str;
-	this->_phone_number = str;
+    return (this->_phone_number);
 }
 
-void	Contact::set_dsecret()
+std::string Contact::get_dsecret()
 {
-	std::string	str;
-
-	std::cout << "Your Darkest Secret: ";
-	std::cin >> str;
-	this->_dsecret = str;
-}
-
-void	PhoneBook::init_index()
-{
-	this->_max_contacts = 0;
-}
-
-void	PhoneBook::increment_index()
-{
-	this->_max_contacts++;
+    return (this->_dsecret);
 }

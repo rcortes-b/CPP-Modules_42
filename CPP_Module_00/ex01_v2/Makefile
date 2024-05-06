@@ -5,7 +5,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 HEAD = class.hpp
-SRCS = phonebook.cpp functionality.cpp
+SRCS = phonebook.cpp getters.cpp setters.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
