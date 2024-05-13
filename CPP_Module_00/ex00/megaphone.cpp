@@ -10,21 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//std::cout << "The value of x is: " << x << std::endl;
-
 #include <iostream>
 
-static void	iterate_space(char *str, int *index)
+static void	iterate_space(char *str, int *i)
 {
-	while (str[*index] == ' ' || str[*index] == '\t')
-		(*index)++;
+	while (std::isspace(str[*i]))
+		(*i)++;	
 }
 
 static int	is_lastchr(char *str)
 {
 	for (int i = 0; str[i]; i++)
 	{
-		if (str[i] != ' ' && str[i] != '\t')
+		if (!isspace(str[i]))
 			return (0);
 	}
 	return (1);
@@ -32,19 +30,23 @@ static int	is_lastchr(char *str)
 
 int	main(int argc, char **argv)
 {
+	int	i = 0;
+
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	for (int j = 1; argv[j]; j++)
 	{
-		for (int i = 0; argv[j][i]; i++)
+		i = 0;
+		iterate_space(argv[j], &i);
+		while (argv[j][i] && !is_lastchr(&argv[j][i]))
 		{
-			if (i == 0)
-				iterate_space(argv[j], &i);
-			if (is_lastchr(&argv[j][i]))
+			if (i > 0 && std::isspace(argv[j][i]) && !std::isspace(argv[j][i - 1]))
+				std::cout << " ";
+			iterate_space(argv[j], &i);
+			if (!argv[j][i])
 				break ;
-			if (argv[j][i] >= 'a' && argv[j][i] <= 'z')
-				argv[j][i] -= 32;
-			std::cout << argv[j][i];
+			std::cout << (char)std::toupper(argv[j][i]);
+			i++;
 		}
 		if (argv[j + 1])
 			std::cout << " ";
