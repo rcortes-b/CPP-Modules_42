@@ -59,15 +59,3 @@ void	PhoneBook::increment_index()
 {
 	this->_max_contacts++;
 }
-
-void	PhoneBook::sort_contacts()
-{
-	int	i;
-
-	i = 0;
-	while (++i < 8)
-	{
-		this->_user[i - 1] = this->_user[i];
-		this->_user[i - 1].set_index(this->_user[i - 1].get_index() - 1);
-	}
-}

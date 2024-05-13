@@ -2,25 +2,14 @@
 
 static int	check_input(std::string instruction, PhoneBook *book)
 {
-	if (instruction[0] == 'A')
-	{
-		if (instruction.compare("ADD") == 0)
-			book->add_contact();
-			//add_contact(book);
-	}
-	else if (instruction[0] == 'S')
-	{
-		if (instruction.compare("SEARCH") == 0)
+	if (instruction.compare("ADD") == 0)
+		book->add_contact();
+	else if (instruction.compare("SEARCH") == 0)
 			book->search();
-			//print_contacts(book);
-	}
-	else if (instruction[0] == 'E')
+	else if (instruction.compare("EXIT") == 0)
 	{
-		if (instruction.compare("EXIT") == 0)
-		{
-			std::cout << "Thanks for using Notkia!" <<std::endl;
-			return (0);
-		}
+		std::cout << "Thanks for using Notkia! See you soon." <<std::endl;
+		return (0);
 	}
 	else
 		std::cout << "The instruction is incorrect. Please, type it again.\n" << std::endl;
