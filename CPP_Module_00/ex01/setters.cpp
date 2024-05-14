@@ -50,6 +50,13 @@ bool	Contact::set_phone_number()
 	std::getline(std::cin, str);
 	if (!str[0])
 		return (false);
+	for (int l = 0; str[l]; l++)
+	{
+		if (str[l] == '+' && l > 0)
+			return (false);
+		else if (!std::isdigit(str[l]) && str[l] != '+')
+			return (false);
+	}
 	this->_phone_number = str;
 	return (true);
 }

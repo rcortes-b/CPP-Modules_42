@@ -53,7 +53,10 @@ bool	PhoneBook::add_contact()
 	if (!this->_user[this->_max_contacts].set_nickname())
 		return (false);
 	if (!this->_user[this->_max_contacts].set_phone_number())
+	{
+		std::cout << "\n  Phone number only can have numeric characters!" << std::endl;
 		return (false);
+	}
 	if (!this->_user[this->_max_contacts].set_dsecret())
 		return (false);
 	this->increment_index();
