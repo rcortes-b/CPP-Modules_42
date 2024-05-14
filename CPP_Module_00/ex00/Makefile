@@ -1,7 +1,7 @@
 NAME = megaphone
 
-CC = g++
-FLAGS = -Wall -Wextra -Werror 
+CC = c++
+FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 SRCS = megaphone.cpp

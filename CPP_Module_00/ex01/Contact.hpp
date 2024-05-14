@@ -1,5 +1,5 @@
-#ifndef CLASS_HPP
-# define CLASS_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 #include <iostream>
 #include <string>
@@ -30,23 +30,5 @@ public:
 		std::string	get_dsecret();
 
 };
-
-class PhoneBook {
-private:
-		Contact _user[MAX_NUM_OF_CONTACTS];
-		int		_max_contacts;
-
-public:
-		void	exit_msg(void);
-		bool 	add_contact(void);
-		void	sort_contacts(void);
-		bool 	search(void);
-		void	init_index();
-		void	increment_index();
-};
-
-//void	add_contact(PhoneBook *book);
-
-//void	print_contacts(PhoneBook *book);
 
 #endif

@@ -1,11 +1,11 @@
 NAME = notkia
 
-CC = g++
+CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-HEAD = class.hpp
-SRCS = phonebook.cpp getters.cpp setters.cpp main.cpp
+HEAD = Contact.hpp PhoneBook.hpp
+SRCS = PhoneBook.cpp getters.cpp setters.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)

@@ -1,4 +1,4 @@
-#include "class.hpp"
+#include "PhoneBook.hpp"
 
 void	PhoneBook::exit_msg()
 {
@@ -31,7 +31,7 @@ bool	PhoneBook::add_contact()
 		while (1)
 		{
 			std::cout << "Type y/n to continue ";
-			std::cin >> is_follow;
+			std::getline(std::cin, is_follow);
 			if (!is_follow[0])
 				return (false);
 			if (is_follow.compare("y") == 0)
@@ -117,7 +117,7 @@ bool	PhoneBook::search()
 	while (1)
 	{
 		std::cout << "Introduce a valid index to display a contact or 0 to exit: ";
-		std::cin >> index;
+		std::getline(std::cin, index);
 		if (!index[0])
 			return (false);
 		else if (index.size() > 1)

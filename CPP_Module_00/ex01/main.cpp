@@ -1,4 +1,4 @@
-#include "class.hpp"
+#include "PhoneBook.hpp"
 
 static int	check_input(std::string instruction, PhoneBook *book)
 {
@@ -50,7 +50,7 @@ int	main(void)
 		std::cout << "-----------------------------------------------" << std::endl;
 		do_menu();
 		std::cout << "\033[1;34mnotkia>\033[0m ";
-		std::cin >> instruction;
+		std::getline(std::cin, instruction);
 		if (!instruction[0])
 		{
 			std::cout << std::endl;

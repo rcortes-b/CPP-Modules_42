@@ -1,4 +1,4 @@
-#include "class.hpp"
+#include "PhoneBook.hpp"
 
 void	Contact::set_index(int index)
 {
@@ -10,7 +10,7 @@ bool	Contact::set_first_name()
 	std::string	str;
 
 	std::cout << "First Name: ";
-	std::cin >> str;
+	std::getline(std::cin, str);
 	if (!str[0])
 		return (false);
 	this->_first_name = str;
@@ -22,7 +22,7 @@ bool	Contact::set_last_name()
 	std::string	str;
 
 	std::cout << "Last Name: ";
-	std::cin >> str;
+	std::getline(std::cin, str);
 	if (!str[0])
 		return (false);
 	this->_last_name = str;
@@ -35,7 +35,7 @@ bool	Contact::set_nickname()
 	std::string	str;
 
 	std::cout << "Nickname: ";
-	std::cin >> str;
+	std::getline(std::cin, str);
 	if (!str[0])
 		return (false);
 	this->_nickname = str;
@@ -47,7 +47,7 @@ bool	Contact::set_phone_number()
 	std::string	str;
 
 	std::cout << "Phone Number: ";
-	std::cin >> str;
+	std::getline(std::cin, str);
 	if (!str[0])
 		return (false);
 	this->_phone_number = str;
@@ -59,9 +59,9 @@ bool	Contact::set_dsecret()
 	std::string	str;
 
 	std::cout << "Your Darkest Secret: ";
-	std::cin >> str;
+	std::getline(std::cin, str);
 	while (!str[0])
-		std::cin >> str;
+		std::getline(std::cin, str);
 	this->_dsecret = str;
 	return (true);
 }

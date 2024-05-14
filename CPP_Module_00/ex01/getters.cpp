@@ -1,4 +1,4 @@
-#include "class.hpp"
+#include "PhoneBook.hpp"
 
 int Contact::get_index()
 {
