@@ -4,13 +4,12 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-HEAD = file.hpp
 SRCS = main.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
 
-%.o : %.cpp Makefile $(HEAD)
+%.o : %.cpp Makefile
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
