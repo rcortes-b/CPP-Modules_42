@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcortes- <rcortes-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/15 18:03:17 by rcortes-          #+#    #+#             */
+/*   Updated: 2024/05/15 18:03:18 by rcortes-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -22,9 +34,7 @@ static void	fill_file(std::fstream &old_file, std::ofstream &new_file, std::stri
 				trigger = 1;
 			if (!trigger && found == (size_t)i)
 			{
-				std::cout << "first: " << i << std::endl;
 				i += s1.size() - 1;
-				std::cout << "second: " << i << std::endl;
 				for (l = 0; s2[l]; l++)
 					new_file << s2[l];
 			}
@@ -40,7 +50,7 @@ int main(int argc, char **argv)
 	std::string		new_str = "";
 	std::string		file_format = ".replace";
 
-	if (argc < 2 || argc > 4 || !*argv[2])
+	if (argc != 4 || !*argv[2])
 	{
 		std::cout << "Wrong number of arguments or invalid input!" << std::endl;
 		return (1);
