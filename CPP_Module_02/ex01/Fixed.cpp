@@ -10,15 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-
-/*
-			Fixed(const int fpValue); //new
-			Fixed(const float fpValue); //new
-			float	toFloat (void ) const; //new
-			int		toInt ( void ) const; //new
-*/
-			
+#include "Fixed.hpp"			
 
 Fixed::Fixed(void)
 {
@@ -37,7 +29,7 @@ Fixed::Fixed(const int fpValue) : _fixedValue (fpValue << _bits)
 	std::cout << "Int constructor called !" << std::endl;
 }
 
-Fixed::Fixed(const float fpValue) : _fixedValue(static_cast<int>(std::roundf(fpValue * (1 << _bits))))
+Fixed::Fixed(const float fpValue) : _fixedValue(static_cast<int>(roundf(fpValue * (1 << _bits))))
 {
 	std::cout << "Float constructor called !" << std::endl;
 }
@@ -52,8 +44,9 @@ Fixed& Fixed::operator=(const Fixed& obj)
 
 std::ostream&  operator<<(std::ostream &os, const Fixed &obj)
 {
-	std::cout << "Copy assignment operator << called !" << std::endl;
-	return (os << obj._fixedValue);
+	//std::cout << "Copy assignment operator << called !" << std::endl;
+	os << obj.toFloat();
+	return (os);
 }
 
 Fixed::~Fixed(void)
@@ -75,10 +68,10 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat (void ) const
 {
-	return ((float)this->_fixedValue);
+	return ((float)this->_fixedValue / (float)(1 << this->_bits));
 }
 
 int	Fixed::toInt (void ) const
 {
-	return ((int)this->_fixedValue);
+	return (this->_fixedValue / (1 << this->_bits));
 }
