@@ -12,6 +12,7 @@
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 void	ep_msg(std::string name, int option)
 {
@@ -32,7 +33,7 @@ int	main(void)
 	std::string name = "norminette";
 	ScavTrap norme(name);
 	name = "moulinette";
-	ClapTrap mouli (name);
+	FragTrap mouli (name);
 	mouli.attack(name);
 	norme.takeDamage(20);
 	norme.takeDamage(20);
