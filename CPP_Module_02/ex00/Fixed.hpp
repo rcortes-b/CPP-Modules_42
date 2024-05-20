@@ -25,7 +25,7 @@ class Fixed {
 			void	setRawBits( int const raw );
 	private:
 			int	_fixedValue;
-			static const int	bits = 8;
+			static const int	_bits = 8;
 };
 
 #endif

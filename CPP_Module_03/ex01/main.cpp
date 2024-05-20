@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 void	ep_msg(std::string name, int option)
 {
@@ -29,14 +30,15 @@ void	ep_msg(std::string name, int option)
 int	main(void)
 {
 	std::string name = "norminette";
-	ClapTrap norme(name);
+	ScavTrap norme(name);
 	name = "moulinette";
-	ClapTrap mouli (name);
+	ScavTrap mouli (name);
 	norme.attack(name);
+	mouli.takeDamage(20);
+	mouli.takeDamage(20);
+	mouli.takeDamage(20);
+	mouli.takeDamage(200);
 	mouli.takeDamage(2);
 	mouli.takeDamage(2);
-	mouli.takeDamage(2);
-	mouli.takeDamage(2);
-	mouli.takeDamage(2);
-	mouli.takeDamage(2);
+	norme.beRepaired(43);
 }

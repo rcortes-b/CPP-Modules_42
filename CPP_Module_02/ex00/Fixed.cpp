@@ -15,20 +15,20 @@
 Fixed::Fixed(void)
 {
 	std::cout << "Default constructor has been called !" << std::endl;
-	this->_fixedValue = 0;
+	this->setRawBits(0);
 }
 
 Fixed::Fixed(const Fixed &obj)
 {
 	std::cout << "Copy constructor has been called !" << std::endl;
-	this->_fixedValue = obj.getRawBits();;
+	this->_fixedValue = obj.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed& obj)
 {
 	std::cout << "Copy assignment operator called !" << std::endl;
 	if (this != &obj)
-		_fixedValue = obj.getRawBits();
+		this->_fixedValue = obj.getRawBits();
 	return (*this);
 }
 

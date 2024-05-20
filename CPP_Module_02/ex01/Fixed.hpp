@@ -21,15 +21,15 @@ class Fixed {
 	public:
 			Fixed();
 			Fixed(const Fixed &obj);
-			Fixed(const int fpValue); //new
-			Fixed(const float fpValue); //new
+			Fixed(const int fpValue);
+			Fixed(const float fpValue);
 			Fixed& operator=(const Fixed& obj);
 			~Fixed();
 			friend std::ostream&  operator<<(std::ostream &os, const Fixed &obj);
 			int		getRawBits( void ) const;
 			void	setRawBits( int const raw );
-			float	toFloat (void ) const; //new
-			int		toInt ( void ) const; //new
+			float	toFloat (void ) const;
+			int		toInt ( void ) const;
 	private:
 			int					_fixedValue;
 			static const int	_bits = 8;

@@ -19,7 +19,7 @@ int main(void)
 	std::string		&stringREF = str;
 
 	std::cout << "Memory Address of the string: " << &str << std::endl;
-	std::cout << "Memory Address of the string pointer: " << &*stringPTR << std::endl;
+	std::cout << "Memory Address of the string pointer: " << &stringPTR << std::endl;
 	std::cout << "Memory Address of the string reference: " << &stringREF << std::endl;
 
 	std::cout << std::endl;

@@ -4,8 +4,8 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-HEADA = ScavTrap.hpp ScavTrap .hpp
-SRCS = main.cpp ScavTrap.cpp ScavTrap.cpp
+HEADA = ScavTrap.hpp ClapTrap.hpp
+SRCS = main.cpp ScavTrap.cpp ClapTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
