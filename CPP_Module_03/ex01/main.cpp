@@ -15,12 +15,12 @@
 
 void	ep_msg(std::string name, int option)
 {
-	if (option == 1)
+	if (option == 1) //to beRepaired
 	{
 		std::cout << "ClapTrap " << name;
 		std::cout << " has no energy, so he cannot be repaired !" << std::endl;
 	}
-	else
+	else //to attack
 	{
 		std::cout << "ClapTrap " << name;
 		std::cout << " has no energy, so he cannot attack !" << std::endl;
@@ -29,16 +29,15 @@ void	ep_msg(std::string name, int option)
 
 int	main(void)
 {
-	std::string name = "norminette";
-	ScavTrap norme(name);
-	name = "moulinette";
-	ClapTrap mouli (name);
-	mouli.attack(name);
-	norme.takeDamage(20);
-	norme.takeDamage(20);
-	mouli.takeDamage(20);
-	norme.takeDamage(200);
-	mouli.takeDamage(2);
-	mouli.takeDamage(2);
-	norme.beRepaired(43);
+	ScavTrap Norme ("Norminette");
+	ClapTrap Mouli ("Moulinette");
+
+	Mouli.attack("pep");
+	Norme.takeDamage(20);
+	Norme.takeDamage(20);
+	Mouli.takeDamage(20);
+	Norme.takeDamage(200);
+	Mouli.takeDamage(2);
+	Mouli.takeDamage(2);
+	Norme.beRepaired(43);
 }

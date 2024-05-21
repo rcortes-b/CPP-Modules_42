@@ -14,10 +14,14 @@
 
 FragTrap::FragTrap( void ) : ClapTrap()
 {
-	std::cout << "Default FragTrap construcor called !" << std::endl;
+	std::cout << "Default FragTrap constructor called !" << std::endl;
+	this->_name = "DefaultFragTrap";
+	this->_hp = 100;
+	this->_ep = 100;
+	this->_ad = 30;
 }
 
-FragTrap::FragTrap(std::string &name) : ClapTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Default FragTrap param constructor called !" << std::endl;
 	this->_name = name;

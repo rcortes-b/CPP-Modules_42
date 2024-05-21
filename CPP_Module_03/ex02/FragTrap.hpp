@@ -20,7 +20,7 @@ class FragTrap : public ClapTrap
 {
 	public:
 			FragTrap( void );
-			FragTrap(std::string &name);
+			FragTrap(std::string name);
 			FragTrap(FragTrap &obj);
 			FragTrap &operator=(const FragTrap &obj);
 			~FragTrap( void );

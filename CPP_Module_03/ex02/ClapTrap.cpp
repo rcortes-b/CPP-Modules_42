@@ -15,9 +15,13 @@
 ClapTrap::ClapTrap(void)
 {
 	std::cout << "Default ClapTrap construcor called !" << std::endl;
+	this->_name = "";
+	this->_hp = 10;
+	this->_ep = 10;
+	this->_ad = 0;
 }
 
-ClapTrap::ClapTrap(std::string &name)
+ClapTrap::ClapTrap(std::string name)
 {
 	std::cout << "Default ClapTrap param constructor called !" << std::endl;
 	this->_name = name;

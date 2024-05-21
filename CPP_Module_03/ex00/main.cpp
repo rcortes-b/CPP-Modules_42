@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcortes- <rcortes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 15:18:12 by rcortes-          #+#    #+#             */
-/*   Updated: 2024/05/16 15:18:12 by rcortes-         ###   ########.fr       */
+/*   Created: 2024/05/21 10:52:26 by rcortes-          #+#    #+#             */
+/*   Updated: 2024/05/21 10:52:28 by rcortes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ep_msg(std::string name, int option)
 {
-	if (option == 1)
+	if (option == 1) //to beRepaired
 	{
 		std::cout << "ClapTrap " << name;
 		std::cout << " has no energy, so he cannot be repaired !" << std::endl;
 	}
-	else //attack
+	else //to attack
 	{
 		std::cout << "ClapTrap " << name;
 		std::cout << " has no energy, so he cannot attack !" << std::endl;
@@ -28,15 +28,15 @@ void	ep_msg(std::string name, int option)
 
 int	main(void)
 {
-	std::string name = "norminette";
-	ClapTrap norme(name);
-	name = "moulinette";
-	ClapTrap mouli (name);
-	norme.attack(name);
-	mouli.takeDamage(2);
-	mouli.takeDamage(2);
-	mouli.takeDamage(2);
-	mouli.takeDamage(2);
-	mouli.takeDamage(2);
-	mouli.takeDamage(2);
+	ClapTrap Mouli ("Moulinette");
+	ClapTrap Norme ("Norminette");
+
+	Mouli.attack("pep");
+	Norme.takeDamage(20);
+	Norme.takeDamage(20);
+	Mouli.takeDamage(20);
+	Norme.takeDamage(200);
+	Mouli.takeDamage(2);
+	Mouli.takeDamage(2);
+	Norme.beRepaired(43);
 }

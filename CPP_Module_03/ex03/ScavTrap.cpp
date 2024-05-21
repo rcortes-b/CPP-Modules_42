@@ -14,10 +14,14 @@
 
 ScavTrap::ScavTrap( void ) : ClapTrap()
 {
-	std::cout << "Default ScavTrap construcor called !" << std::endl;
+	std::cout << "Default ScavTrap constructor called !" << std::endl;
+	this->_name = "DefaultScavTrap";
+	this->_hp = 100;
+	this->_ep = 50;
+	this->_ad = 20;
 }
 
-ScavTrap::ScavTrap(std::string &name) : ClapTrap(name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Default ScavTrap param constructor called !" << std::endl;
 	this->_name = name;

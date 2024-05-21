@@ -1,7 +1,7 @@
 NAME = DiamondTrap
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
 RM = rm -rf
 
 HEADA = ScavTrap.hpp ClapTrap.hpp FragTrap.hpp DiamondTrap.hpp
