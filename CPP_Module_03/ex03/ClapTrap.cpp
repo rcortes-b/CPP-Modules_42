@@ -79,24 +79,24 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (_hp == 0)
 	{
-		std::cout << _name << " is already dead !" << std::endl;
+		std::cout << "ClapTrap " << _name << " is already dead !" << std::endl;
 		return ;
 	}
-	std::cout << _name << " has received " << amount;
+	std::cout << "ClapTrap " << _name << " has received " << amount;
 	std::cout << " hit points of damage !" << std::endl;
 	if ((int)(_hp - amount) < 0)
 		_hp = 0;
 	else
 		_hp -= amount;
 	if (_hp == 0)
-		std::cout << _name << " got clapped ! (died)" << std::endl;
+		std::cout << "ClapTrap " << _name << " got clapped ! (died)" << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (_hp == 0)
 	{
-		std::cout << _name << " is dead and cannot "; 
+		std::cout << "ClapTrap " << _name << " is dead and cannot "; 
 		std::cout << "be repaired !" << std::endl;
 		return ;
 	}
@@ -105,8 +105,13 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		ep_msg(_name, 1);
 		return ;
 	}
-	std::cout << _name << " has repaired a total amount of ";
+	std::cout << "ClapTrap " << _name << " has repaired a total amount of ";
 	std::cout << amount << " hit points !" << std::endl;
 	_ep -= 1;
 	_hp += amount;
+}
+
+std::string	ClapTrap::getName(void)
+{
+	return (this->_name);
 }

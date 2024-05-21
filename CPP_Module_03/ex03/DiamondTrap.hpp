@@ -28,11 +28,9 @@ class DiamondTrap : public ScavTrap, public FragTrap
 			~DiamondTrap( void );
 			using ScavTrap::attack;
 			void	whoAmI( void );
+			void 	setName(std::string name);
 	private:
-		/*	std::string				_name;
-			unsigned int			_hp;
-			unsigned int			_ep;
-			unsigned int			_ad;*/
+			std::string	_name;
 };
 
 #endif

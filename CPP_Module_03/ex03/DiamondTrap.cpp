@@ -12,7 +12,7 @@
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap(void) : ClapTrap("Default_clap_name")
 {
 	std::cout << "Default DiamondTrap constructor called !" << std::endl;
 	this->_name = "DefaultDiamondTrap";
@@ -23,7 +23,7 @@ DiamondTrap::DiamondTrap(void) : ScavTrap(), FragTrap()
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name")
 {
-	std::cout << "Default ClapTrap param constructor called !" << std::endl;
+	std::cout << "Default DiamondTrap param constructor called !" << std::endl;
 
 	this->_name = name;
 	this->_hp = FragTrap::_hp;
@@ -31,7 +31,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name")
 	this->_ad = FragTrap::_ad;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap &obj) : ScavTrap(obj), FragTrap(obj)
+DiamondTrap::DiamondTrap(DiamondTrap &obj) : ClapTrap(obj), ScavTrap(obj), FragTrap(obj)
 {
 	std::cout << "DiamondTrap copy constructor called !" << std::endl;
 	this->_name = obj._name;
