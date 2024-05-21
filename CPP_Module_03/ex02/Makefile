@@ -6,19 +6,21 @@ RM = rm -rf
 
 HEADA = ScavTrap.hpp ClapTrap.hpp FragTrap.hpp
 SRCS = main.cpp ScavTrap.cpp ClapTrap.cpp FragTrap.cpp
-OBJS = $(SRCS:.cpp=.o)
+OBJS = $(SRCS:%.cpp=$(D_OBJS)/%.o)
+D_OBJS= obj
 DEPS = $(SRCS:.cpp=.d)
 
 all : $(NAME)
 
-%.o : %.cpp Makefile $(HEAD)
+$(D_OBJS)/%.o : %.cpp Makefile $(HEAD)
+	@mkdir -p  $(D_OBJS)
 	$(CC) $(FLAGS) -MMD -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 clean :
-	$(RM) $(OBJS) $(DEPS)
+	$(RM) $(D_OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
