@@ -4,10 +4,13 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-HEAD = includes/Animal.hpp includes/Dog.hpp includes/Cat.hpp \
-		includes/Brain.hpp
-SRCS = main.cpp srcs/Animal.cpp srcs/Dog.cpp srcs/Cat.cpp \
-		srcs/Brain.cpp
+HEAD = includes/AMateria.hpp includes/Cure.hpp includes/Ice.hpp \
+		includes/ICharacter.hpp includes/Character.hpp \
+		includes/IMateriaSource.hpp includes/MateriaSource.hpp
+SRCS = main.cpp srcs/AMateria.cpp srcs/Cure.cpp srcs/Ice.cpp \
+		srcs/ICharacter.cpp srcs/Character.cpp \
+		srcs/IMateriaSource.cpp srcs/MateriaSource.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 

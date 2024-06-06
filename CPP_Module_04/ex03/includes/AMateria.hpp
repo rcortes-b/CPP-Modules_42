@@ -2,17 +2,20 @@
 # define AMATERIA_HPP
 
 #include <iostream>
+#include "ICharacter.hpp"
 
 class AMateria {
 	public:
-			AMateria( std::string const &type);
-
 			std::string const &getType( void ) const;
-
 			virtual AMateria	*clone( void ) const = 0;
-			virtual void		use(ICharaacter &target);
+			virtual void		use(ICharacter &target) = 0;
+			virtual ~AMateria( void );
 	protected:
-				std::string const	&type;
+				AMateria( void );
+				AMateria( std::string const &type);
+				AMateria( AMateria const &obj );
+				AMateria &operator=( AMateria &obj );
+				std::string _type;
 };
 
-#endif
+#endif 
