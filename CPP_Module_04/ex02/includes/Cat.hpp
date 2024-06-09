@@ -10,7 +10,7 @@ class Cat : public Animal {
 			Cat(Cat &obj);
 			Cat &operator=(Cat &obj);
 			~Cat ( void );
-			void		makeSound( void );
+			virtual void		makeSound( void );
 			std::string	getType( void );
 			void		setType( std::string type );
 			Brain	*getBrain( void );

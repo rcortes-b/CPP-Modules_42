@@ -2,10 +2,13 @@
 # define AMATERIA_HPP
 
 #include <iostream>
-#include "ICharacter.hpp"
+#include <stdbool.h>
+
+class ICharacter;
 
 class AMateria {
 	public:
+			AMateria &operator=( AMateria &obj );
 			std::string const &getType( void ) const;
 			virtual AMateria	*clone( void ) const = 0;
 			virtual void		use(ICharacter &target) = 0;
@@ -14,7 +17,6 @@ class AMateria {
 				AMateria( void );
 				AMateria( std::string const &type);
 				AMateria( AMateria const &obj );
-				AMateria &operator=( AMateria &obj );
 				std::string _type;
 };
 

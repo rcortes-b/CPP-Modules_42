@@ -1,7 +1,7 @@
 NAME = AbstractMateria
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 RM = rm -rf
 
 HEAD = includes/AMateria.hpp includes/Cure.hpp includes/Ice.hpp \

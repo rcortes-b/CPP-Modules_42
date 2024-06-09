@@ -6,10 +6,12 @@
 class IMateriaSource {
 	public:
 			virtual ~IMateriaSource( void ) {}
-			virtual void learnMateria(AMateria*) = 0;
-			virtual AMateria* createMateria(std::string const & type) = 0;
-
-	private:
+			virtual void learnMateria( AMateria* materia ) = 0;
+			virtual AMateria* createMateria(std::string const &type) = 0;
+	protected:
+			IMateriaSource( void );
+			IMateriaSource( IMateriaSource  const &obj );
+			IMateriaSource const &operator=( IMateriaSource const &obj );
 };
 
 #endif

@@ -10,7 +10,7 @@ class Dog : public Animal {
 			Dog(Dog &obj);
 			Dog &operator=(Dog &obj);
 			~Dog ( void );
-			void		makeSound( void );
+			virtual void		makeSound( void );
 			std::string	getType( void );
 			void		setType( std::string type );
 			Brain	*getBrain( void );

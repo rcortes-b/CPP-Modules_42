@@ -8,7 +8,7 @@ class Animal {
 	public:
 			Animal &operator=(Animal &obj);
 			virtual ~Animal ( void );
-			virtual void	makeSound( void );
+			virtual void	makeSound( void ) = 0;
 			std::string		getType( void );
 			virtual Brain	*getBrain( void ) = 0;
 	protected:

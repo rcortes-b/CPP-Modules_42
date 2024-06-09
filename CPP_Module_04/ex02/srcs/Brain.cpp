@@ -14,8 +14,7 @@ Brain::Brain(Brain &obj)
 Brain &Brain::operator=(Brain &obj)
 {
 	std::cout << "Brain default copy operator !" << std::endl;
-	//if (*this != obj)
-		*this = obj;
+	(void)obj;
 	return (*this);
 }
 
