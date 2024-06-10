@@ -2,6 +2,10 @@
 # define BUREAUCRAT_HPP
 
 #include <iostream>
+#include <stdbool.h>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 	private:
@@ -15,7 +19,7 @@ class Bureaucrat {
 			Bureaucrat const &operator=( Bureaucrat const &obj);
 			~Bureaucrat( void );
 
-			//Getters && Setters
+			//Getters
 			std::string	getName( void );
 			int			getGrade( void );
 
@@ -23,6 +27,9 @@ class Bureaucrat {
 			void	increment_grade( void );
 			void	decrement_grade( void );
 			
+			//Custom Function
+			void	signForm( Form &paper );
+
 			//Exception classes
 			class GradeTooHighException : public std::exception {
 				public:
