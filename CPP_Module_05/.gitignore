@@ -1,0 +1,9 @@
+.vscode
+ex00/srcs/*.d
+ex00/srcs/*.o
+ex01/srcs/*.d
+ex01/srcs/*.o
+ex02/srcs/*.d
+ex02/srcs/*.o
+ex03/srcs/*.d
+ex03/srcs/*.o
