@@ -28,9 +28,10 @@ class AForm {
 			int			getExecGrade( void );
 
 			//Custom Function
-			void		beSigned(Bureaucrat &bur);
-			void		execute( Bureaucrat const &executor ) const;
+			void			beSigned(Bureaucrat &bur);
+			void			execute( Bureaucrat const &executor ) const;
 			virtual void	do_execute( void ) const = 0;
+			static AForm	*makeForm( std::string const &name, std::string const &target);
 
 			//Exception classes
 			class GradeTooHighException : public std::exception {

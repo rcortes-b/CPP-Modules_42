@@ -10,13 +10,14 @@ class RobotomyRequestForm : public AForm {
 	public:
 		//Orthodox Canonical Form
 		RobotomyRequestForm( void );
-		RobotomyRequestForm( std::string &target );
+		RobotomyRequestForm( std::string const &target );
 		RobotomyRequestForm( RobotomyRequestForm const &obj);
 		RobotomyRequestForm const &operator=( RobotomyRequestForm const &obj);
 		~RobotomyRequestForm( void );
 
 		//Execute Function
 		virtual void	do_execute( void ) const;
+		static AForm	*makeForm(AForm *form, std::string const &name, std::string const &target);
 };
 
 std::ostream  &operator<<(std::ostream &os, RobotomyRequestForm &obj);

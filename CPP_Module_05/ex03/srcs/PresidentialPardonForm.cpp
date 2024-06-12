@@ -6,7 +6,7 @@ PresidentialPardonForm::PresidentialPardonForm(void) : AForm("Default name", 0, 
 	this->_target = "DefaultTarget";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string &target) : AForm("Default name", 0, 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(std::string const &target) : AForm("Default name", 0, 25, 5)
 {
 	std::cout << "PresidentialPardonForm Parameter Constructor" << std::endl;
 	this->_target = target;
@@ -48,4 +48,11 @@ std::ostream  &operator<<(std::ostream &os, PresidentialPardonForm &obj)
 void	PresidentialPardonForm::do_execute(void) const
 {
 	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+}
+
+AForm	*PresidentialPardonForm::makeForm(AForm *form, std::string const &name, std::string const &target)
+{
+	if (!form && !name.compare("PresidentialPardon"))
+		return (new PresidentialPardonForm(target));
+	return (form);
 }

@@ -1,4 +1,7 @@
 #include "../includes/AForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
 
 AForm::AForm(void) : _name("DefaultName"), _sign_grade (50), _exec_grade(50)
 {
@@ -83,6 +86,16 @@ void	AForm::execute(Bureaucrat const &executor) const
 	else if (this->_sign_grade < executor.getGrade())
 		throw AForm::GradeTooLowException();
 	this->do_execute();
+}
+
+AForm	*AForm::makeForm(std::string const &name, std::string const &target)
+{
+	AForm	*form = NULL;
+
+	form = PresidentialPardonForm::makeForm(form, name, target);
+	form = RobotomyRequestForm::makeForm(form, name, target);
+	form = ShrubberyCreationForm::makeForm(form, name, target);
+	return (form);
 }
 
 const char	*AForm::GradeTooHighException::what(void) const throw()

@@ -1,6 +1,9 @@
 #include "includes/Bureaucrat.hpp"
 #include "includes/AForm.hpp"
 #include "includes/PresidentialPardonForm.hpp"
+#include "includes/ShrubberyCreationForm.hpp"
+#include "includes/RobotomyRequestForm.hpp"
+#include "includes/Intern.hpp"
 
 int	main()
 {
@@ -57,5 +60,9 @@ int	main()
 		std::cout << elnombrequesea.what() << std::endl;
 		std::cout << "HOLA PASA POR AQUI? v2" << std::endl;
 	}
+
+	Intern	a;
+	AForm	*b = a.makeForm("RobotomyRequest", "Bob");
+	delete b;
 	return 0;
 }

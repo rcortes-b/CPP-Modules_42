@@ -8,7 +8,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("Default name", 0, 14
 	this->_target = "DefaultTarget";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string &target) : AForm("Default name", 0, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : AForm("Default name", 0, 145, 137)
 {
 	std::cout << "ShrubberyCreationForm Parameter Constructor" << std::endl;
 	this->_target = target;
@@ -72,4 +72,11 @@ void	ShrubberyCreationForm::do_execute(void) const
 	"        ###" << std::endl << std::endl;
 
 	outFile.close();
+}
+
+AForm	*ShrubberyCreationForm::makeForm(AForm *form, std::string const &name, std::string const &target)
+{
+	if (!form && !name.compare("PresidentialPardon"))
+		return (new ShrubberyCreationForm(target));
+	return (form);
 }

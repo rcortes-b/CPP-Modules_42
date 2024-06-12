@@ -8,7 +8,7 @@ RobotomyRequestForm::RobotomyRequestForm(void) : AForm("Default name", 0, 72, 45
 	this->_target = "DefaultTarget";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string &target) : AForm("Default name", 0, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : AForm("Default name", 0, 72, 45)
 {
 	std::cout << "RobotomyRequestForm Parameter Constructor" << std::endl;
 	this->_target = target;
@@ -60,4 +60,11 @@ void	RobotomyRequestForm::do_execute(void) const
 	}
 	else
 		std::cout << "Robotomy has failed." << std::endl;
+}
+
+AForm	*RobotomyRequestForm::makeForm(AForm *form, std::string const &name, std::string const &target)
+{
+	if (!form && !name.compare("RobotomyRequest"))
+		return (new RobotomyRequestForm(target));
+	return (form);
 }
