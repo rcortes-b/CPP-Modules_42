@@ -55,10 +55,11 @@ class Converter : public ScalarConverter {
 
 			//Convert Functions
 			virtual void	convertType( std::string &type );
-			void			toChar( void );
-			void			toInt( void );
-			void			toFloat( void );
-			void			toDouble( void );
+			void			doChar( void );
+			void			doInt( void );
+			void			doFloat( void );
+			void			doDouble( void );
+			void			printValues( void );
 
 			//Error Handler
 			void	handle_error( void );

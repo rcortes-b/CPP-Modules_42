@@ -9,14 +9,16 @@ int main(int argc, char **argv) /*El main va a ser un try && catch*/
 	}
 	std::string arg = argv[1];
 	Converter input(arg);
+	std::cout << std::endl;
 	try {
 		input.check_input(arg);
-		//std::cout << "Type is: " << input.getType() << std::endl;
+		std::cout << "\nType is: " << input.getStrType() << std::endl << std::endl;
 		input.handle_error();
 		input.convertType(input.getStrType());
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 	return (0);
 }

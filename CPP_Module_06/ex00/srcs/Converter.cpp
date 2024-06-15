@@ -9,8 +9,8 @@ Converter::Converter(void) : ScalarConverter()
 	this->_err_type = 0;
 	this->_cType = 0;
 	this->_iType = 0;
-	this->_fType = 0;
-	this->_dType = 0;
+	this->_fType = 0.0f;
+	this->_dType = 0.0;
 }
 
 Converter::Converter(std::string &input) : ScalarConverter()
@@ -22,8 +22,8 @@ Converter::Converter(std::string &input) : ScalarConverter()
 	this->_err_type = 0;
 	this->_cType = 0;
 	this->_iType = 0;
-	this->_fType = 0;
-	this->_dType = 0;
+	this->_fType = 0.0f;
+	this->_dType = 0.0;
 }
 
 Converter::Converter( Converter const &obj ) : ScalarConverter(obj)
@@ -168,47 +168,92 @@ void	Converter::convertType(std::string &type)
 		return ;
 	switch (this->_type) {
 		case 1:
-				this->toChar();
+				this->doChar();
 				break ;
 		case 2:
-				this->toInt();
+				this->doInt();
 				break ;
 		case 3:
-				this->toFloat();
+				this->doFloat();
 				break ;
 		case 4:
-				this->toDouble();
+				this->doDouble();
 				break ;
 		}
 }
 
-void	Converter::toChar(void)
+void	Converter::doChar(void)
 {
-	float l = 3.0f;
 	this->_cType = this->_input[0];
 	this->_iType = static_cast<int>(this->_cType);
 	this->_fType = static_cast<float>(this->_cType);
 	this->_dType = static_cast<double>(this->_cType);
-	std::cout << "char: " << l << std::endl;
 	std::cout << "char: " << this->_cType << std::endl;
+	this->printValues();
+}
+
+void	Converter::doInt(void)
+{
+	size_t	i = 0;
+	int		neg = 1;
+
+	if (this->_input[0] == '-')
+	{
+		neg = -1;
+		i++;
+	}
+	for (; i < this->_input.size(); i++)
+		this->_iType = this->_iType * 10 + (this->_input[i] - '0');
+	this->_iType *= neg;
+	this->_fType = static_cast<float>(this->_iType);
+	this->_dType = static_cast<double>(this->_iType);
+	std::cout << "char: ";
+	if (this->_iType >= 32 && this->_iType <= 126)
+		std::cout << (char)this->_iType << std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+	this->printValues();
+}
+
+void	Converter::doFloat(void)
+{
+	this->_fType = atof(this->_input.c_str());
+	this->_iType = static_cast<int>(this->_fType);
+	this->_dType = static_cast<double>(this->_fType);
+	std::cout << "char: ";
+	if (this->_iType >= 32 && this->_iType <= 126)
+		std::cout << (char)this->_iType << std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+	this->printValues();
+}
+
+void	Converter::doDouble(void)
+{
+	this->_dType = atof(this->_input.c_str());
+	this->_iType = static_cast<int>(this->_dType);
+	this->_fType = static_cast<float>(this->_dType);
+	std::cout << "char: ";
+	if (this->_iType >= 32 && this->_iType <= 126)
+		std::cout << (char)this->_iType << std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+	this->printValues();
+}
+
+void	Converter::printValues(void)
+{
 	std::cout << "int: " << this->_iType << std::endl;
-	std::cout << "float: " << this->_fType << std::endl;
-	std::cout << "double: " << this->_dType << std::endl;
-}
-
-void	Converter::toInt(void)
-{
-
-}
-
-void	Converter::toFloat(void)
-{
-
-}
-
-void	Converter::toDouble(void)
-{
-
+	std::cout << "float: " << this->_fType;
+	if ((this->_iType - this->_fType) == 0)
+		std::cout << ".0f" << std::endl;
+	else
+		std::cout << "f" << std::endl;
+	std::cout << "double: " << this->_dType;
+	if (!(this->_iType - this->_dType))
+		std::cout << ".0" << std::endl;
+	else
+		std::cout << std::endl;
 }
 
 void	Converter::handle_error(void)
