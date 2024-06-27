@@ -1,0 +1,14 @@
+.vscode
+ex00/srcs/*.o
+ex00/srcs/*.d
+ex00/main.o
+ex00/main.d
+ex00/whatever
+ex01/srcs/*.o
+ex01/srcs/*.d
+ex01/main.o
+ex01/main.d
+ex01/Iter
+ex02/srcs/*.o
+ex02/srcs/*.d
+ex02/Array

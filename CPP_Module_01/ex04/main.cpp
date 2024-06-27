@@ -62,7 +62,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	new_str = argv[1] + file_format;
-	std::ofstream	new_file (new_str);
+	std::ofstream	new_file (new_str.c_str());
 	fill_file(f, new_file, (std::string)argv[2], (std::string)argv[3]);
 	return (0);
 }

@@ -1,7 +1,7 @@
 NAME = Polymorph
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -v
 RM = rm -rf
 
 HEAD = includes/Animal.hpp includes/Dog.hpp includes/Cat.hpp \
