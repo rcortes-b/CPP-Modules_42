@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include <bits/stdc++.h>
+#include <algorithm>
 
 #define DEFAULT_LIMIT 12000
 class Span {

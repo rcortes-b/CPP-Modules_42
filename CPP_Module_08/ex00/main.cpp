@@ -3,6 +3,7 @@
 int main(void)
 {
 	//Declare a vector container of int
+	//std::vector<int> proof(3, 0);
 	std::vector<int> proof;
 
 	/* Initialize the container with the push_back
