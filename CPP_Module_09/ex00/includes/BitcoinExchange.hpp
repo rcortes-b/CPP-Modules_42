@@ -27,6 +27,7 @@ typedef struct s_data
 	std::map<std::string, float>	data;
 }				t_data;
 
+typedef std::map<std::string, float>::iterator iterator;
 
 void			exchange_rate(t_data &data);
 

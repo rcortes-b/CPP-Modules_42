@@ -6,6 +6,33 @@ static void	ft_iterspace(std::string line, unsigned int &i)
 		i++;
 }
 
+static bool	ocurrence_date_aux(t_data &data, std::string &line, unsigned int &i, iterator &it, int db_it)
+{
+	unsigned int	value = 0;
+	unsigned int	tmp = 0;
+
+	value = ((line[i] - '0') * 10) + (line[i + 1] - '0');
+	while (std::strncmp(&it->first.c_str()[db_it], &line.c_str()[i], 2))
+	{
+		tmp = ((it->first.c_str()[db_it] - '0') * 10) + (it->first.c_str()[db_it + 1] - '0');
+		if (tmp > value)
+		{
+			it--;
+			break ;
+		}
+		it++;
+		if (it == data.data.end())
+		{
+			if (db_it == 5)
+				std::cerr << "Error: month is out of range." << std::endl;
+			else
+				std::cerr << "Error: day is out of range." << std::endl;
+			return (false);
+		}
+	}
+	return (true);
+}
+
 static bool	check_data(std::string &line, unsigned int &i, unsigned int &tmp)
 {
 	if (DATE_SIZE - i != 10)
@@ -63,39 +90,25 @@ static unsigned int	check_input(std::string &line)
 
 static void	check_ocurrence_date(t_data &data, std::string &line)
 {
-	std::map<std::string, float>::iterator	it = data.data.begin();
+	iterator	it = data.data.begin();
 	unsigned int	i = 0;
-	unsigned int	value = 0;
-	unsigned int	tmp = 0;
 
 	ft_iterspace(line, i);
 	while (std::strncmp(it->first.c_str(), &line.c_str()[i], 4))
+	{
 		it++;
+		if (it == data.data.end())
+		{
+			std::cerr << "Error: year is out of range." << std::endl;
+			return ;
+		}
+	}
 	i += 5;
-	value = ((line[i] - '0') * 10) + (line[i + 1] - '0');
-	while (std::strncmp(&it->first.c_str()[5], &line.c_str()[i], 2))
-	{
-		
-		tmp = ((it->first.c_str()[5] - '0') * 10) + (it->first.c_str()[6] - '0');
-		if (tmp > value)
-		{
-			it--;
-			break ;
-		}
-		it++;
-	}
+	if (!ocurrence_date_aux(data, line, i, it, 5))
+		return ;
 	i += 3;
-	value = ((line[i] - '0') * 10) + (line[i + 1] - '0');
-	while (std::strncmp(&it->first.c_str()[8], &line.c_str()[i], 2))
-	{
-		tmp = ((it->first.c_str()[8] - '0') * 10) + (it->first.c_str()[9] - '0');
-		if (tmp > value)
-		{
-			it--;
-			break ;
-		}
-		it++;
-	}
+	if (!ocurrence_date_aux(data, line, i, it, 8))
+		return ;
 	i += 2;
 	while (!std::isdigit(line[i]))
 		i++;
@@ -113,18 +126,18 @@ void	handle_output(t_data &data, std::string &line, int error_code)
 	switch (error_code)
 	{ 
 		case 1:
-				std::cout << "Error: bad input => ";
+				std::cerr << "Error: bad input => ";
 				ft_iterspace(line, i);
-				std::cout << line.substr(i, i + DATE_SIZE) << std::endl;
+				std::cerr << line.substr(i, i + DATE_SIZE) << std::endl;
 				break ;
 		case 2:
-				std::cout << "Error: date format is invalid." << std::endl;
+				std::cerr << "Error: date format is invalid." << std::endl;
 				break ;
 		case 3:
-				std::cout << "Error: not a positive number." << std::endl;
+				std::cerr << "Error: not a positive number." << std::endl;
 				break;
 		case 4:
-				std::cout << "Error: too large number." << std::endl;
+				std::cerr << "Error: too large number." << std::endl;
 				break;
 		default:
 				check_ocurrence_date(data, line);
