@@ -4,10 +4,12 @@
 #include <iostream>
 
 template <typename T>
-void	iter(T* a, int len, T (*f)(T& a))
+void	iter(T* a, unsigned int len, void (*f)(T&))
 {
-	for (int i = 0; i < len; i++)
-		a[i] = f(a[i]);
+	if (!a || !f)
+		return ;
+	for (unsigned int i = 0; i < len; i++)
+		f(a[i]);
 }
 
 #endif

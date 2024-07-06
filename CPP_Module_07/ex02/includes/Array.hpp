@@ -43,7 +43,7 @@ class Array {
 					delete [] this->_array;
 			}
 
-			unsigned int	size( void ) {
+			unsigned int	size( void ) const {
 				return (this->_size);
 			}
 
