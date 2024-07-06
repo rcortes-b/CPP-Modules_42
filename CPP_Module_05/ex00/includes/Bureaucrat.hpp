@@ -5,8 +5,8 @@
 
 class Bureaucrat {
 	private:
-		std::string	const _name;
-		int			_grade;
+		std::string const	_name;
+		int					_grade;
 	public:
 			//Orthodox Canonical Form
 			Bureaucrat( void );
@@ -16,8 +16,8 @@ class Bureaucrat {
 			~Bureaucrat( void );
 
 			//Getters && Setters
-			std::string	getName( void );
-			int			getGrade( void );
+			std::string	getName( void ) const;
+			int			getGrade( void ) const;
 
 			//Increment && Decrement
 			void	increment_grade( void );

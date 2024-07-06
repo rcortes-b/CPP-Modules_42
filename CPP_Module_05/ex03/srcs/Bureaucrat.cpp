@@ -40,7 +40,7 @@ std::ostream	&operator<<(std::ostream &os, Bureaucrat &obj)
 	return (os);
 }
 
-std::string	Bureaucrat::getName(void)
+std::string	Bureaucrat::getName(void) const
 {
 	return (this->_name);
 }
@@ -52,14 +52,16 @@ int	Bureaucrat::getGrade(void) const
 
 /*Si no recibe la referencia, cada vez que se llame
 a la funcion se crea y se destruye la instancia de Form*/
-void	Bureaucrat::signForm(AForm &paper)
+void	Bureaucrat::signForm(AForm &form)
 {
-	if (paper.getIsSigned() == true)
-		std::cout << this->getName() << " signed " << paper.getName() << std::endl;
-	else
+	try
 	{
-		std::cout << this->getName() << " couldn't sign " << paper.getName();
-		std::cout << " because was so high" << std::endl;
+		form.beSigned(*this);
+		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->_name << " couldn't sign " << form.getName() << " because: " << e.what() << std::endl;
 	}
 }
 

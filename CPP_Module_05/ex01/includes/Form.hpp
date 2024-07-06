@@ -20,10 +20,10 @@ class Form {
 			~Form( void );
 
 			//Getters
-			std::string	getName( void );
-			bool		getIsSigned( void );
-			int			getSignGrade( void );
-			int			getExecGrade( void );
+			std::string	getName( void ) const;
+			bool		getIsSigned( void ) const;
+			int			getSignGrade( void ) const;
+			int			getExecGrade( void ) const;
 
 			//Custom Function
 			void		beSigned(Bureaucrat &bur);

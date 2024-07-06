@@ -9,8 +9,8 @@ class AForm;
 
 class Bureaucrat {
 	private:
-		std::string	const _name;
-		int			_grade;
+		std::string	const	_name;
+		int					_grade;
 	public:
 			//Orthodox Canonical Form
 			Bureaucrat( void );
@@ -20,7 +20,7 @@ class Bureaucrat {
 			~Bureaucrat( void );
 
 			//Getters
-			std::string	getName( void );
+			std::string	getName( void ) const;
 			int			getGrade( void ) const;
 
 			//Increment && Decrement
@@ -28,7 +28,7 @@ class Bureaucrat {
 			void	decrement_grade( void );
 			
 			//Custom Function
-			void	signForm( AForm &paper );
+			void	signForm( AForm &form );
 			void	executeForm(AForm const &form);
 
 			//Exception classes

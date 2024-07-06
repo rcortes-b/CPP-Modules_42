@@ -46,22 +46,22 @@ std::ostream	&operator<<(std::ostream &os, Form &obj)
 	return (os);
 }
 
-std::string	Form::getName(void)
+std::string	Form::getName(void) const
 {
 	return (this->_name);
 }
 
-bool	Form::getIsSigned(void)
+bool	Form::getIsSigned(void) const
 {
 	return (this->_is_signed);
 }
 
-int	Form::getSignGrade(void)
+int	Form::getSignGrade(void) const
 {
 	return (this->_sign_grade);
 }
 
-int	Form::getExecGrade(void)
+int	Form::getExecGrade(void) const
 {
 	return (this->_exec_grade);
 }
@@ -72,8 +72,10 @@ void	Form::beSigned(Bureaucrat &bur)
 		throw Form::GradeTooHighException();
 	else if (this->getSignGrade() > 150)
 		throw Form::GradeTooLowException();
-	if (bur.getGrade() >= this->getSignGrade())
+	if (bur.getGrade() <= this->getSignGrade())
 		this->_is_signed = true;
+	else
+		throw Form::GradeTooLowException();
 }
 
 const char	*Form::GradeTooHighException::what(void) const throw()

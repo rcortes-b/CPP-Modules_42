@@ -9,11 +9,16 @@ int	main()
 {
 	Bureaucrat	thiery = Bureaucrat("Thiery", 3);
 	AForm	*f = new  PresidentialPardonForm();
+	try {
 	std::cout << thiery << std::endl;
 	thiery.signForm(*f);
 	(*f).beSigned(thiery);
 	thiery.signForm(*f);
 	std::cout << f << std::endl;
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
 	try
 	{
 		for (int cur = 0; cur < 3; cur++)

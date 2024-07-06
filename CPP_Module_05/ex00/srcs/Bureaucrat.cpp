@@ -40,12 +40,12 @@ std::ostream	&operator<<(std::ostream &os, Bureaucrat &obj)
 	return (os);
 }
 
-std::string	Bureaucrat::getName(void)
+std::string	Bureaucrat::getName(void) const
 {
 	return (this->_name);
 }
 
-int	Bureaucrat::getGrade(void)
+int	Bureaucrat::getGrade(void) const
 {
 	return (this->_grade);
 }

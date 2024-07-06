@@ -54,17 +54,17 @@ std::string	AForm::getName(void) const
 	return (this->_name);
 }
 
-bool	AForm::getIsSigned(void)
+bool	AForm::getIsSigned(void) const
 {
 	return (this->_is_signed);
 }
 
-int	AForm::getSignGrade(void)
+int	AForm::getSignGrade(void) const
 {
 	return (this->_sign_grade);
 }
 
-int	AForm::getExecGrade(void)
+int	AForm::getExecGrade(void) const
 {
 	return (this->_exec_grade);
 }
@@ -77,6 +77,8 @@ void	AForm::beSigned(Bureaucrat &bur)
 		throw AForm::GradeTooLowException();
 	if (bur.getGrade() >= this->getSignGrade())
 		this->_is_signed = true;
+	else
+		throw AForm::GradeTooLowException();
 }
 
 void	AForm::execute(Bureaucrat const &executor) const
