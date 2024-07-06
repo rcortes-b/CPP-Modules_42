@@ -22,7 +22,10 @@ class Span {
 			void				addNumber( unsigned int number );
 			unsigned int		shortestSpan( void );
 			unsigned int		longestSpan( void );
+			void				fillNumbers( void );
 
+			//Function to access the container
+			std::vector<unsigned int>	getContainer( void ) const;
 			//Exceptions
 			class MaxNumbersStored : public std::exception {
 				const char	*what( void ) const throw();

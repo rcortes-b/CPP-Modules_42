@@ -42,6 +42,20 @@ int main(void)
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
+	try {
+		Span sp1 = Span(N_AMOUNT);
+		srand(time(NULL));
+		for (unsigned int i = 0; i < N_AMOUNT - 10; i++)
+			sp1.addNumber(rand());
+		std::cout << "Container size before: " << sp1.getContainer().size() << std::endl;
+		sp1.fillNumbers();
+		std::cout << "Container size after: " << sp1.getContainer().size() << std::endl;
+		std::cout << sp1.shortestSpan() << std::endl;
+		std::cout << sp1.longestSpan() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 
 	return (0);
 }

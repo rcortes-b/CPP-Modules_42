@@ -44,15 +44,15 @@ unsigned int	Span::shortestSpan(void)
 	if(this->_container.size() < 2)
 		throw Span::ShortestException();
 
-	unsigned int	res = 0;
-	unsigned int	tmp = 0;
+	int	res = -1;
+	int	tmp = 0;
 	std::sort(this->_container.begin(), this->_container.end());
 	std::vector<unsigned int>::iterator it = this->_container.begin();
 	it++;
 	for (;	it != this->_container.end(); it++)
 	{
 		tmp = *it  - *(it - 1);
-		if (res == 0 || res > tmp)
+		if (res == -1 || res > tmp)
 			res = tmp;
 	}
 	return (res);
@@ -64,6 +64,19 @@ unsigned int	Span::longestSpan(void)
 		throw Span::LongestException();
 	std::sort(this->_container.begin(), this->_container.end());
 	return (*(this->_container.end() - 1) - *this->_container.begin());
+}
+
+void	Span::fillNumbers(void)
+{
+	unsigned int	size = this->_container.size();
+
+	for (; size < this->_N; size++)
+		this->addNumber(size);
+}
+
+std::vector<unsigned int>	Span::getContainer( void ) const
+{
+	return (_container);
 }
 
 const char	*Span::MaxNumbersStored::what(void) const throw()
