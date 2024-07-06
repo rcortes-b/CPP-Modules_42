@@ -12,12 +12,12 @@ typedef struct s_Data
 
 class Serializer {
 	private:
-	public:
 			//Orthodox Canonical Form
 			Serializer( void );
 			Serializer( Serializer const &obj );
 			Serializer const &operator=( Serializer const &obj );
 			~Serializer( void );
+	public:
 
 			//Serializer Functions
 			static uintptr_t	serialize(t_Data* ptr);
