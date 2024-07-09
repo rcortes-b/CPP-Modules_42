@@ -28,11 +28,13 @@ static bool	check_number(char *arg, unsigned int &j)
 		j++;
 		zero_counter++;
 	}
-	for (; arg[j] && !std::isspace(arg[j]);)
+	for (; arg[j] && std::isdigit(arg[j]);)
 	{
 		j++;
 	}
-	if (j - tmp - zero_counter > 10)
+	if (arg[j] && !std::isdigit(arg[j]))
+		return (false);
+	else if (j - tmp - zero_counter > 10)
 		return (false);
 	if (!arg[j])
 		j--;
@@ -63,6 +65,7 @@ static bool	check_input(int argc, char **argv, vector &vecNums)
 			}
 			else if (!std::isspace(argv[i][j]))
 			{
+				std::cout << "pq no etra" << std::endl;
 				std::cerr << "Error: there is a negative number or an undefined character" << std::endl;
 				return (false);
 			}
