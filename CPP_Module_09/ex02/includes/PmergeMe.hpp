@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <vector>
 #include <list>
+#include <time.h>
+#include <typeinfo>
 
 template <typename T>
 void	swap(T &a, T &b)
@@ -27,8 +29,8 @@ typedef std::list<int>::iterator it_list;
 
 typedef struct s_merge
 {
-	list	nums;
-	list	sorted;
+	vector	nums;
+	vector	sorted;
 	int		**values;
 	size_t	pairs;
 	bool	is_odd;
@@ -36,5 +38,6 @@ typedef struct s_merge
 
 void	create_pairs(t_merge &data, int argc);
 void	delete_values(t_merge &data);
+void	insertion_sort(t_merge &data, int argc);
 
 #endif

@@ -1,25 +1,13 @@
 #include "../includes/PmergeMe.hpp"
 
-void	push_tonewlist(t_merge &data)
+static void	sort_great_pairs(t_merge &data) //creo que aqui hay un error 
 {
-	for (size_t i = 0; i < data.pairs; i++)
-	{
-		for (size_t j = 0; j < 2; j++)
-		{
-			if (j == 1 && data.is_odd && i == data.pairs -1)
-				return ;
-			data.sorted.push_back(data.values[i][j]);
-		}
-	}
-}
-
-static void	sort_great_pairs(t_merge &data)
-{
-	int	*tmp = NULL;
 	size_t	tmp_pairs = data.pairs;
+	int		*tmp = NULL;
 
 	if (data.is_odd)
 		tmp_pairs -= 1;
+
 	for (size_t i = 0; i < tmp_pairs - 1; i++)
 	{
 		for (size_t j = i + 1; j < tmp_pairs; j++)
@@ -36,26 +24,78 @@ static void	sort_great_pairs(t_merge &data)
 
 void	create_pairs(t_merge &data, int argc)
 {
-	it_list			it = data.nums.begin();
+	it_vec			it = data.nums.begin();
 
 	data.pairs = ((argc - 1) / 2) + ((argc - 1) % 2);
-	data.values = new int*[data.pairs];
+	data.values = new int*[data.pairs + 1];
+	data.values[data.pairs] = NULL;
 	for (size_t i = 0; i < data.pairs; i++)
 	{
-		data.values[i] = new int[2];
+		data.values[i] = new int[3];
+		data.values[i][2] = 0;
 		for (size_t j = 0; j < 2; j++)
 		{
 			data.values[i][j] = *it;
 			it++;
-			if (i == data.pairs - 1 && data.is_odd)
+			if (data.is_odd && i + 1 == data.pairs)
 				break ;
 		}
-		if (!(i == data.pairs - 1 && data.is_odd))
+		if (!(data.is_odd && i + 1 == data.pairs))
 			swap(data.values[i][0], data.values[i][1]);
-		/*data.sorted.push_back(data.values[i][0]); //delete pq no quiero poner nada aun en el sorted
-		if (!(i == data.pairs - 1 && data.is_odd)) //del
-			data.sorted.push_back(data.values[i][1]); //del*/
 	}
 	sort_great_pairs(data);
-	push_tonewlist(data);
+}
+
+static void	fill_temparrays(t_merge &data, int *tmp, int *res)
+{
+	for (size_t l = 0; l < data.pairs - data.is_odd; l++)
+	{
+		tmp[l] = data.values[l][0];
+		res[l] = data.values[l][1];
+	}
+	if (data.is_odd)
+		tmp[data.pairs - 1] = data.values[data.pairs - 1][0];
+}
+
+static void	insert_value_into_array(int *res, int value, int index, int max_len)
+{
+	int copy[max_len];
+
+	for (int l = 0; l < max_len; l++)
+		copy[l] = res[l];
+	res[index] = value;
+	index++;
+	for (int j = index - 1; j < max_len; j++)
+	{
+		if (j + 1 != max_len)
+			res[index] = copy[j];
+		index++;
+	}
+}
+
+void	insertion_sort(t_merge &data, int argc)
+{
+	int *res = new int[argc];
+	int	tmp[data.pairs];
+	
+	res[argc - 1] = 0;
+	fill_temparrays(data, tmp, res);
+	unsigned int 	supp = 0;
+	size_t			i = 0;
+	for (; i < data.pairs; i++)
+	{
+		for (size_t j = 0; j < data.pairs - data.is_odd + supp; j++)
+		{
+
+			if ((!j && tmp[i] <= res[j]) || (j && res[j - 1] <= tmp[i] && res[j] > tmp[i]))
+			{
+				insert_value_into_array(res, tmp[i], j, argc - 1);
+				supp++;
+				break ;
+			}
+		}
+	}
+	for (i = 0; (int)i < argc - 1; i++)
+		data.sorted.push_back(res[i]);
+	delete [] res;
 }
