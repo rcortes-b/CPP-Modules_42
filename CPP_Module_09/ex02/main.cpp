@@ -7,13 +7,13 @@ void	delete_values(t_merge &data)
 	delete [] data.values;
 }
 
-static void	print_list(vector &nums, bool is_before)
+static void	print_list(vector &vecNums, bool is_before)
 {
 	if (is_before)
 		std::cout << "Before: ";
 	else
 		std::cout << "After: ";
-	for (it_vec it = nums.begin(); it != nums.end(); it++)
+	for (it_vec it = vecNums.begin(); it != vecNums.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 }
@@ -39,7 +39,7 @@ static bool	check_number(char *arg, unsigned int &j)
 	return (true);
 }
 
-static bool	check_input(int argc, char **argv, vector &nums)
+static bool	check_input(int argc, char **argv, vector &vecNums)
 {
 	unsigned int	num = 0;
 
@@ -67,7 +67,7 @@ static bool	check_input(int argc, char **argv, vector &nums)
 				return (false);
 			}
 		}
-		nums.push_back(num);
+		vecNums.push_back(num);
 	}
 	return (true);
 }
@@ -78,8 +78,8 @@ static const char	*print_type(T type)
 {
 	if (typeid(type).name() == typeid(vector).name())
 		return ("std::vector");
-	else if (typeid(type).name() == typeid(list).name())
-		return ("std::list");
+	else if (typeid(type).name() == typeid(deque).name())
+		return ("std::deque");
 	else
 		return ("Unknown type");
 }
@@ -87,23 +87,32 @@ static const char	*print_type(T type)
 int	main(int argc, char **argv)
 {
 	t_merge	data;
-	clock_t	start, end;
 
-	start = clock();
-	if (!check_input(argc, &argv[1], data.nums))
+	if (!check_input(argc, &argv[1], data.vecNums))
 		return (1);
-	print_list(data.nums, true);
+
+	print_list(data.vecNums, true);
+
 	data.is_odd = 0;
 	if (((argc - 1) % 2) != 0)
 		data.is_odd = 1;
+
+
 	create_pairs(data, argc);
+	data.vecStart = clock();
 	insertion_sort(data, argc);
-	print_list(data.sorted, false);
-	delete_values(data);
-	end = clock();
-	double dblTime = ((double)(end - start) / (double)CLOCKS_PER_SEC) * (double)1000000; 
-	//Time to process a range of 5 elements with std::[..] : 0.00031 us
+	data.deqStart = clock();
+	insertion_sort_deque(data, argc);
+
+	print_list(data.vecSorted, false);
+
+	double dblTime = static_cast<double>(data.vecEnd - data.vecStart);
 	std::cout << "Time to process a range of " << argc - 1 << " elements with ";
-	std::cout << print_type(data.sorted) << " -> " << dblTime << " us" << std::endl;
+	std::cout << print_type(data.vecSorted) << " -> " << dblTime << " us" << std::endl;
+	dblTime = static_cast<double>(data.deqEnd - data.deqStart);
+	std::cout << "Time to process a range of " << argc - 1 << " elements with ";
+	std::cout << print_type(data.deqSorted) << " -> " << dblTime << " us" << std::endl;
+
+	delete_values(data);
 	return (0);
 }

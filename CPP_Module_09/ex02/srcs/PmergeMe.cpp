@@ -24,7 +24,7 @@ static void	sort_great_pairs(t_merge &data) //creo que aqui hay un error
 
 void	create_pairs(t_merge &data, int argc)
 {
-	it_vec			it = data.nums.begin();
+	it_vec			it = data.vecNums.begin();
 
 	data.pairs = ((argc - 1) / 2) + ((argc - 1) % 2);
 	data.values = new int*[data.pairs + 1];
@@ -46,7 +46,8 @@ void	create_pairs(t_merge &data, int argc)
 	sort_great_pairs(data);
 }
 
-static void	fill_temparrays(t_merge &data, int *tmp, int *res)
+template <typename T>
+static void	fill_temparrays(t_merge &data, T &tmp, T &res)
 {
 	for (size_t l = 0; l < data.pairs - data.is_odd; l++)
 	{
@@ -57,7 +58,8 @@ static void	fill_temparrays(t_merge &data, int *tmp, int *res)
 		tmp[data.pairs - 1] = data.values[data.pairs - 1][0];
 }
 
-static void	insert_value_into_array(int *res, int value, int index, int max_len)
+template <typename T>
+static void	insert_value_into_array(T &res, int value, int index, int max_len)
 {
 	int copy[max_len];
 
@@ -75,10 +77,9 @@ static void	insert_value_into_array(int *res, int value, int index, int max_len)
 
 void	insertion_sort(t_merge &data, int argc)
 {
-	int *res = new int[argc];
-	int	tmp[data.pairs];
+	std::vector<int> res(argc - 1);
+	std::vector<int> tmp(data.pairs);
 	
-	res[argc - 1] = 0;
 	fill_temparrays(data, tmp, res);
 	unsigned int 	supp = 0;
 	size_t			i = 0;
@@ -86,7 +87,6 @@ void	insertion_sort(t_merge &data, int argc)
 	{
 		for (size_t j = 0; j < data.pairs - data.is_odd + supp; j++)
 		{
-
 			if ((!j && tmp[i] <= res[j]) || (j && res[j - 1] <= tmp[i] && res[j] > tmp[i]))
 			{
 				insert_value_into_array(res, tmp[i], j, argc - 1);
@@ -95,7 +95,32 @@ void	insertion_sort(t_merge &data, int argc)
 			}
 		}
 	}
-	for (i = 0; (int)i < argc - 1; i++)
-		data.sorted.push_back(res[i]);
-	delete [] res;
+	data.vecSorted = res;
+	data.vecEnd = clock();
+}
+
+/*		/////////////////////////////////////////DEQUE/////////////////////////////////////////		*/
+
+void	insertion_sort_deque(t_merge &data, int argc)
+{
+	std::deque<int> res(argc - 1);
+	std::deque<int> tmp(data.pairs);
+	
+	fill_temparrays(data, tmp, res);
+	unsigned int 	supp = 0;
+	size_t			i = 0;
+	for (; i < data.pairs; i++)
+	{
+		for (size_t j = 0; j < data.pairs - data.is_odd + supp; j++)
+		{
+			if ((!j && tmp[i] <= res[j]) || (j && res[j - 1] <= tmp[i] && res[j] > tmp[i]))
+			{
+				insert_value_into_array(res, tmp[i], j, argc - 1);
+				supp++;
+				break ;
+			}
+		}
+	}
+	data.deqSorted = res;
+	data.deqEnd = clock();
 }
