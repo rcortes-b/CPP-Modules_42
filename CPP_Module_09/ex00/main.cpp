@@ -32,7 +32,7 @@ static void	parse_database(t_data &data)
 	std::getline(data.db, line);
 
 	while (std::getline(data.db, line))
-		data.data[line.substr(0, TRIMMER)] = std::atof(line.c_str() + TRIMMER + 1);
+		data.data[line.substr(0, TRIMMER)] = static_cast<float>(std::atoi(line.c_str() + TRIMMER + 1));
 }
 
 int main(int argc, char **argv)

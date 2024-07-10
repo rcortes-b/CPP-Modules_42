@@ -35,6 +35,7 @@ static bool	ocurrence_date_aux(t_data &data, std::string &line, unsigned int &i,
 
 static bool	check_data(std::string &line, unsigned int &i, unsigned int &tmp)
 {
+	unsigned int	temp_value = 0;
 	if (DATE_SIZE - i != 10)
 		return (false);
 	for (tmp = i + 4; i < tmp; i++)
@@ -55,6 +56,9 @@ static bool	check_data(std::string &line, unsigned int &i, unsigned int &tmp)
 		}
 		if (line[i] == '-' && !l)
 			i++;
+		temp_value = std::atoi(&line[i - 2]);
+		if (!temp_value || (!l && temp_value > 12) || (l && temp_value > 31))
+			return (false);
 	}
 	return (true);
 }
