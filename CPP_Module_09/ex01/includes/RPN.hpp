@@ -8,7 +8,7 @@
 #include <vector>
 #include <iterator>
 
-typedef std::stack<int>	stack;
+typedef std::stack<double>	stack;
 
 bool			calculate_RPN(stack &nums, char *input);
 unsigned int	is_operator(char c);

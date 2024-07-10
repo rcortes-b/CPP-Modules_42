@@ -1,6 +1,6 @@
 #include "../includes/RPN.hpp"
 
-static int	do_operation(unsigned int op, int value1, int value2)
+static double	do_operation(unsigned int op, double value1, double value2)
 {
 	switch (op)
 	{
@@ -18,8 +18,8 @@ static int	do_operation(unsigned int op, int value1, int value2)
 
 bool	calculate_RPN(stack &nums, char *input)
 {
-	int	tmp = 0;
-	int	res = 0;
+	double	tmp = 0;
+	double	res = 0;
 
 	for (unsigned int i = 0; input[i]; i++)
 	{
@@ -36,7 +36,7 @@ bool	calculate_RPN(stack &nums, char *input)
 				return (false);
 			tmp = nums.top();
 			nums.pop();
-			if (is_operator(input[i]) == 4 && (!tmp || !nums.top()))
+			if (is_operator(input[i]) == 4 && !tmp)
 				return (false);
 			res = do_operation(is_operator(input[i]), nums.top(), tmp);
 			nums.pop();
