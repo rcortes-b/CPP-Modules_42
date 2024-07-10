@@ -24,13 +24,20 @@ bool	calculate_RPN(stack &nums, char *input)
 	for (unsigned int i = 0; input[i]; i++)
 	{
 		if (std::isdigit(input[i]))
-			nums.push(input[i] - '0');
+		{
+			if (i && input[i - 1] == '-')
+				nums.push(-(input[i] - '0'));
+			else
+				nums.push(input[i] - '0');
+		}
 		else if (is_operator(input[i]) && (!input[i + 1] || std::isspace(input[i + 1])))
 		{
 			if (nums.size() < 2)
 				return (false);
 			tmp = nums.top();
 			nums.pop();
+			if (is_operator(input[i]) == 4 && (!tmp || !nums.top()))
+				return (false);
 			res = do_operation(is_operator(input[i]), nums.top(), tmp);
 			nums.pop();
 			nums.push(res);
